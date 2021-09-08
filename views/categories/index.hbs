@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      {{>head}}
+
+       {{>head.css}}
+
+       {{>head.js}}
+  </head>
+
+  <body class="nav-md">
+
+    <div class="container body">
+      <div class="main_container">
+
+     {{>head.sidebar}}
+
+      {{>head.topnav}}
+
+      
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <button class="btn btn-success addcategory" style="position: relative; float:right">Kategori Ekle</button>
+                  <h2>Kateogori İşlemleri</h2>
+         
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <table id="data-table" cellspacing="0" width="100%" data-url="categories/orders" class="table table-striped table-bordered orders" style="text-align: center;">
+                    <thead>
+                      <tr>
+                        <th style="text-align: center;">Sırlama</th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">İsActive</th>
+                        <th style="text-align: center;">İşlemler</th>
+                      </tr>
+                    </thead>
+          
+                    <tbody  class="sortable" data-url="categories/orders">
+                     
+                    </tbody>
+                    </table>
+          
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="modal fade" id="openaddmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" style="text-align: center;" id="exampleModalLabel">Kategori Ekle</h5>
+
+				</div>
+				<div class="modal-body">
+					<form method="dialog" action="" id="addcategory">
+						<div class="mb-4">
+							<label for="recipient-name" class="col-form-label">Name:</label>
+							<input type="text" class="form-control" name="name" id="addname"  required="">
+						</div>
+           				 <br>
+
+					 <div class="modal-footer" style="margin-bottom: -15px; text-align: center;">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+							<input type="submit" name="" class="btn btn-primary" value="Kaydet">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <div class="modal fade" id="openupdatemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" style="text-align: center;" id="exampleModalLabel">Kategori Güncelle</h5>
+					
+				</div>
+				<div class="modal-body">
+					<form action="" method="dialog" id="updatecategory"  >
+						<div class="mb-4">
+							<label for="recipient-name" class="col-form-label">Name:</label>
+							<input type="text" class="form-control" name="name" id="updatename"  required="">
+						</div>
+          				  <br>
+				
+						 <div class="modal-footer" style="margin-bottom: -15px; text-align: center;">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+							<input type="submit" name="" class="btn btn-primary" value="Güncelle">
+						</div>
+            <input type="hidden" name="id" id="id">
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+        <script>
+         $(document).ready(function(){
+
+         let datatable = $('#data-table').DataTable({
+    "processing" : true,
+    "ajax" : {
+			url:"categories/list",
+			type:"POST",
+		},
+    columns:[
+    {data:'orders'},
+    {data:'name'},
+    ],
+    language: {url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Turkish.json'},
+    lengthMenu: [[-1,20,50,100], ['All',20,50,100]],
+    dom: '<"top"lBf>rt<"bottom"ip><"clear">',
+    buttons: [
+             {
+  extend: 'pdf',
+ messageTop: 'PDF created by PDFMake with Buttons for DataTables.',
+  title:'Noxus Chocolate',
+  exportOptions:{
+                 columns:[1,2],
+               },
+    customize: function (doc) {
+    doc.content[1].table.widths = 
+        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+  }
+},
+             {
+               extend:'excel',
+               title:'Noxus Chocolate',
+               exportOptions:{
+                 columns:[1,2]
+               }
+             },
+             
+            {
+              extend: 'print',
+              title:'Noxus Chocolate',
+              exportOptions:{
+                columns:[1,2]
+              }
+            }
+        ],
+    columnDefs:[
+    {
+      render: function(data, type, row){
+      const html = `<button class="btn btn-success updatecategory"  data-id="${row.id}" name="update">Güncelle</button>`+
+      `<input type="button" data-url="categories/delete" data-value="${row.id}" class="btn btn-danger deleted" name="delete" value="Sil">`
+      return html
+    },
+    targets: 3
+    },
+    {
+      render: function(data, type, row){
+
+        if(row.isactive){
+          var html =  `<input type="checkbox" class="js-switch isActive" checked data-url="categories/isActive" data-id="${row.id}"  " />`
+        }else{
+          var html =  `<input type="checkbox" class="js-switch isActive" data-url="categories/isActive" data-id="${row.id}"  " />`
+        }
+      return html
+    },
+    targets: 2
+    },
+    {
+      render: function(data, type, row){
+      const html =  '<i  class="fa fa-reorder"></i>'
+      return html
+    },
+    targets: 0
+    }
+    ]
+    
+    
+  })
+
+
+        $(".addcategory").click(function(){
+            $('#addname').val('');
+            $('#openaddmodal').modal('show');
+        })
+
+
+        $("#addcategory").submit(function(){
+
+ 	  $.ajax({
+      type:'POST',
+      url:'/categories/add',
+      data:$(this).serialize(),
+      success :function(veri){
+
+ 
+      $.alerts('success','Well done')
+         
+      $('#openaddmodal').modal('hide');
+
+      datatable.ajax.reload();
+
+      }
+    })
+    .fail(function(err) {
+    
+     $.errorMessage(err)
+  
+    })
+
+
+
+ });
+
+
+
+$('#data-table').on('click', '.updatecategory', function(){
+
+      $.ajax({
+        type:'POST',
+        url:'categories/update',
+        data:{id:$(this).data('id')},
+        success :function(result){
+          $('#updatename').val(result.name);
+          $('#id').val(result.id);
+          $('#openupdatemodal').modal('show');
+        }
+    })
+})
+
+    $("#updatecategory").submit(function(){
+
+        
+      $.ajax({
+        type:'Patch',
+        url:'categories/update',
+        data:$(this).serialize(),
+        success :function(veri){
+         
+          $('#openupdatemodal').modal('hide');
+          datatable.ajax.reload();
+          $.alerts('success','Well done')
+        }
+      })
+      .fail(function(err) {
+      $.errorMessage(err)
+    })
+
+    })
+
+
+      $('#data-table').on("click", ".deleted", function(){
+
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted,",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+
+
+        $.ajax({
+          url: $(this).data('url'),
+          type: 'DELETE',
+          data: {id: $(this).data('value')},
+          success: function(result){
+             datatable.ajax.reload();
+                  swal("Poof! Your imaginary file has been deleted!", {
+                      icon: "success",
+                    });
+          }
+        })
+
+
+
+
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+
+
+
+
+
+});
+   
+
+             
+
+
+          })
+        </script>
+     
+        <footer>
+           {{>footer}}
+        </footer>
+        
+      </div>
+    </div>
+
+    {{>footer.js}}
+	
+  </body>
+</html>

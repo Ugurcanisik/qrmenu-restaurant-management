@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      {{>head}}
+
+       {{>head.css}}
+
+       {{>head.js}}
+  </head>
+
+  <body class="nav-md">
+
+    <div class="container body">
+      <div class="main_container">
+
+     {{>head.sidebar}}
+
+      {{>head.topnav}}
+
+      
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+
+  
+              <div class="row tile_count" style="">
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <center><span class="count_top"> Dünkü Ciro </span></center>
+              <div class="count">{{yesterdayCiro}}₺</div>
+            </div>
+             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+             <span class="count_top"> Günlük Ortalama Ciro</span>
+              <div class="count">{{averangeCiro}}₺</div>
+            </div>
+             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <center><span class="count_top"> Total Ciro</span></center>
+              <div class="count">{{totalCiro}}₺</div>
+            </div>
+           <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <center><span class="count_top"> Günlük Gider</span></center>
+              <div class="count">{{todayExpenses}}₺</div>
+            </div>
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <center><span class="count_top"> Aylık Gider </span></center>
+              <div class="count">{{monthlyExpenses}}₺</div>
+            </div>
+
+          </div>
+
+          <!-- /top tiles -->
+
+       
+
+      
+
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Dashboard </h2>
+         
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                <center>Ciro</center>
+                  <div style="width: 50%; margin: 50px auto;  margin-top:-10px">
+                     <canvas id="pie" style="width: auto;" ></canvas>
+                  </div>
+                      <center>Gider</center>
+                    <div style="width: 50%; margin: 50px auto;  margin-top:-10px">
+                     <canvas id="piex" style="width: auto;" ></canvas>
+                  </div>
+          
+                </div>
+              </div>
+            </div>
+
+
+         
+          </div>
+        </div>
+<script>
+  var ctx = document.getElementById("pie").getContext('2d')
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [{{chartCiro.month}}],
+      datasets: [{
+        label: '',
+        data: [{{chartCiro.totalCiro}}],
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+<script>
+  var ctx = document.getElementById("piex").getContext('2d')
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [{{chartExpenses.month}}],
+      datasets: [{
+        label: '',
+        data: [{{chartExpenses.totalExpenses}}],
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+        <footer>
+           {{>footer}}
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    {{>footer.js}}
+	
+  </body>
+</html>
