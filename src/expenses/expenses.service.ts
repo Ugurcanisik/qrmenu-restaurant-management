@@ -6,7 +6,6 @@ import { UpdateExpenseDto } from './dto/update-expense.dto';
 import { Expense } from './entities/expense.entity';
 import { TypeExpense } from './entities/type.expense.entity';
 import { date } from 'src/date';
-import { UsersService } from 'src/users/users.service';
 import { PersonnelService } from 'src/personnel/personnel.service'
 import { SettingsService } from 'src/settings/settings.service';
 

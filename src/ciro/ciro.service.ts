@@ -5,7 +5,6 @@ import { CreateCiroDto } from './dto/create-ciro.dto';
 import { UpdateCiroDto } from './dto/update-ciro.dto';
 import { Ciro } from './entities/ciro.entity';
 import { date } from 'src/date';
-import { UsersService } from 'src/users/users.service';
 import { SettingsService } from 'src/settings/settings.service';
 
 @Injectable()

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res, Req, UsePipes } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Delete, Res, Req, UsePipes } from '@nestjs/common';
 import { PricelistService } from './pricelist.service';
 import { CreatePricelistDto } from './dto/create-pricelist.dto';
 import { UpdatePricelistDto } from './dto/update-pricelist.dto';

@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SettingsService } from 'src/settings/settings.service';
-import { UsersService } from 'src/users/users.service';
 import { Repository } from 'typeorm';
 import { CreatePricelistDto } from './dto/create-pricelist.dto';
 import { UpdatePricelistDto } from './dto/update-pricelist.dto';

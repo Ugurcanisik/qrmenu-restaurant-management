@@ -3,7 +3,6 @@ import { ReportsService } from './reports.service';
 import { ReportsController } from './reports.controller';
 import { CiroModule } from 'src/ciro/ciro.module';
 import { ExpensesModule } from 'src/expenses/expenses.module';
-import { UsersModule } from 'src/users/users.module';
 import { SettingsModule } from 'src/settings/settings.module';
 
 @Module({
