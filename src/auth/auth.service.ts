@@ -1,7 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
-import * as jwt from 'jsonwebtoken';
-import { jwtConstants } from './constants';
 import * as bcrypt from 'bcrypt'
 
 

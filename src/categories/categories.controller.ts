@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res, BadRequestException, UsePipes, UnprocessableEntityException, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Delete, Res, BadRequestException, UsePipes, UnprocessableEntityException, Req } from '@nestjs/common';
 import { JoiValidationPipe } from 'src/joi.validator';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';

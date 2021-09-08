@@ -1,4 +1,4 @@
-import {CanActivate, ExecutionContext, Injectable, Response, UnauthorizedException} from '@nestjs/common';
+import {CanActivate, ExecutionContext, Injectable,UnauthorizedException} from '@nestjs/common';
 
 import * as jwt from 'jsonwebtoken';
 import { jwtConstants } from './constants';

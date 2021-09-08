@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res, UsePipes, UnprocessableEntityException, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Delete, Res, UsePipes, Req } from '@nestjs/common';
 import { JoiValidationPipe } from 'src/joi.validator';
 import { CiroService } from './ciro.service';
 import { CreateCiroDto } from './dto/create-ciro.dto';

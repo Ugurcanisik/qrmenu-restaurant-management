@@ -1,11 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CiroService } from 'src/ciro/ciro.service';
-import { Ciro } from 'src/ciro/entities/ciro.entity';
-import { Expense } from 'src/expenses/entities/expense.entity'
 import { ExpensesService } from 'src/expenses/expenses.service';
-import { TypeExpense } from 'src/expenses/entities/type.expense.entity';
-import { createQueryBuilder, getConnection } from 'typeorm';
-import { UsersService } from 'src/users/users.service';
 import { SettingsService } from 'src/settings/settings.service';
 
 
