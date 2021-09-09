@@ -7,9 +7,13 @@ import { Personnel } from './entities/personnel.entity';
 import { SettingsModule } from 'src/settings/settings.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config), TypeOrmModule.forFeature([Personnel]),SettingsModule],
+  imports: [
+    TypeOrmModule.forRoot(config),
+    TypeOrmModule.forFeature([Personnel]),
+    SettingsModule,
+  ],
   controllers: [PersonnelController],
   providers: [PersonnelService],
-  exports:[PersonnelService]
+  exports: [PersonnelService],
 })
 export class PersonnelModule {}

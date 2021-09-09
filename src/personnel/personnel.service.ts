@@ -8,47 +8,51 @@ import { Personnel } from './entities/personnel.entity';
 
 @Injectable()
 export class PersonnelService {
-
-
   constructor(
-  @InjectRepository(Personnel) private PersonnelRespository: Repository<Personnel>,
-  private readonly SettingsService: SettingsService
+    @InjectRepository(Personnel)
+    private PersonnelRepository: Repository<Personnel>,
+    private readonly SettingsService: SettingsService,
   ) {}
 
-
-  async findAll(){
-    return await this.PersonnelRespository.find({where:{deleted:false}})
+  async findAll() {
+    return await this.PersonnelRepository.find({ where: { deleted: false } });
   }
 
-  allSetting(){
-    return this.SettingsService.findAll()
+  allSetting() {
+    return this.SettingsService.findAll();
   }
 
-
-  async frontFindAll(){
-    return await this.PersonnelRespository.find({where:{deleted:false, isactive:true}})
+  async frontFindAll() {
+    return await this.PersonnelRepository.find({
+      where: { deleted: false, isactive: true },
+    });
   }
-
 
   async create(createPersonnelDto: CreatePersonnelDto) {
-    const newPersonnel = await this.PersonnelRespository.create(createPersonnelDto) 
-    return await this.PersonnelRespository.save(newPersonnel)
+    const newPersonnel = await this.PersonnelRepository.create(
+      createPersonnelDto,
+    );
+    return await this.PersonnelRepository.save(newPersonnel);
   }
 
-
   async findOne(id: string) {
-    return await this.PersonnelRespository.findOne({where:{id:id, deleted:false}})
+    return await this.PersonnelRepository.findOne({
+      where: { id: id, deleted: false },
+    });
   }
 
   async update(updatePersonnelDto: UpdatePersonnelDto) {
-    return await this.PersonnelRespository.update(updatePersonnelDto.id,updatePersonnelDto)
+    return await this.PersonnelRepository.update(
+      updatePersonnelDto.id,
+      updatePersonnelDto,
+    );
   }
 
-  isActive(id: string, data: boolean){
-    return this.PersonnelRespository.update(id,{isactive:data})
+  isActive(id: string, data: boolean) {
+    return this.PersonnelRepository.update(id, { isactive: data });
   }
 
   async remove(id: string) {
-    return await this.PersonnelRespository.update(id,{deleted:true})
+    return await this.PersonnelRepository.update(id, { deleted: true });
   }
 }

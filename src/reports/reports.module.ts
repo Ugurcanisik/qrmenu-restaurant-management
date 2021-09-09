@@ -6,8 +6,8 @@ import { ExpensesModule } from 'src/expenses/expenses.module';
 import { SettingsModule } from 'src/settings/settings.module';
 
 @Module({
-  imports:[CiroModule,ExpensesModule,SettingsModule],
+  imports: [CiroModule, ExpensesModule, SettingsModule],
   controllers: [ReportsController],
-  providers: [ReportsService]
+  providers: [ReportsService],
 })
 export class ReportsModule {}

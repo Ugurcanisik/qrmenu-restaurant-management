@@ -1,367 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      {{>head}}
+<head>
+  {{>head}}
 
-       {{>head.css}}
+  {{>head.css}}
 
-       {{>head.js}}
-  </head>
+  {{>head.js}}
+</head>
 
-  <body class="nav-md">
+<body class="nav-md">
 
-    <div class="container body">
-      <div class="main_container">
+<div class="container body">
+  <div class="main_container">
 
-     {{>head.sidebar}}
+    {{>head.sidebar}}
 
-      {{>head.topnav}}
+    {{>head.topnav}}
 
-      
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="x_panel">
-                <div class="x_title">
-                  <button class="btn btn-success addpersonnel" style="position: relative; float:right">Personel Ekle</button>
-                  <h2>Personel İşlemleri</h2>
-         
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                 
 
-                  <table id="data-table" cellspacing="0" width="100%"  class="table table-striped table-bordered " style="text-align: center;">
-                    <thead>
-                      <tr>
-                        <th style="text-align: center;">İsim</th>
-                        <th style="text-align: center;">Başlangıç Tarihi</th>
-                        <th style="text-align: center;">Çıkış Tarihi</th>
-                        <th style="text-align: center;">isActive</th>
-                        <th style="text-align: center;">İşlemler</th>
-                      </tr>
-                    </thead>
-          
-          
-                    <tbody >
-                     
-                    </tbody>
-                    </table>
-          
-                </div>
-              </div>
+    <!-- page content -->
+    <div class="right_col" role="main">
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <button class="btn btn-success addpersonnel" style="position: relative; float:right">Personel Ekle
+              </button>
+              <h2>Personel İşlemleri</h2>
+
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+
+              <table id="data-table" cellspacing="0" width="100%" class="table table-striped table-bordered "
+                     style="text-align: center;">
+                <thead>
+                <tr>
+                  <th style="text-align: center;">İsim</th>
+                  <th style="text-align: center;">Başlangıç Tarihi</th>
+                  <th style="text-align: center;">Çıkış Tarihi</th>
+                  <th style="text-align: center;">isActive</th>
+                  <th style="text-align: center;">İşlemler</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+
+                </tbody>
+              </table>
+
             </div>
           </div>
         </div>
-
-
-{{!-- Add personnel Start --}}
-
-          <div class="modal fade" id="openaddmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  	<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" style="text-align: center;" id="exampleModalLabel">Personel Ekle</h5>
-
-				</div>
-				<div class="modal-body">
-					<form method="dialog" action="" id="addpersonnel">
-						<div class="mb-4">
-							<label for="recipient-name" class="col-form-label">İsim:</label>
-							<input type="text" class="form-control" name="name" id="addname" required="">
-						</div>
-                       	<br>
-						<div class="mb-4" > 
-							<label for="message-text" class="col-form-label">Başlangıç Tarihi:</label>
-                <div class="input-group date todaydate" >
-   							<input type="text" class="form-control todaydate" style="text-align: center;" name="startdate" id="addstartdate" required="">
-               <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                </div>
-              
-						</div>
-         				   <br>
-						<div class="mb-4" > 
-							<label for="message-text" class="col-form-label">Çıkış Tarihi:</label>
-                <div class="input-group date todaydate" >
-   							<input type="text" class="form-control todaydate" style="text-align: center;" name="enddate" id="addenddate" >
-
-               <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                </div>
-						</div>
-         				   <br>
-  
-						 <div class="modal-footer" style="margin-bottom: -15px; text-align: center;">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-							<input type="submit" name="" class="btn btn-primary" value="Kaydet">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  {{!-- Add personnel End --}}
-
-  <div class="modal fade" id="openupdatemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" style="text-align: center;" id="exampleModalLabel">Personel Güncelle</h5>
-					
-				</div>
-				<div class="modal-body">
-					<form action="" method="dialog" id="updatepersonnel"  >
-						<div class="mb-4">
-							<label for="recipient-name" class="col-form-label">İsim:</label>
-							<input type="text" class="form-control" name="name" id="updatename" required="">
-						</div>
-                       	<br>
-                         					
-						<div class="mb-4" > 
-							<label for="message-text" class="col-form-label">Başlangıç Tarihi:</label>
-                <div class="input-group date todaydate" >
-   							<input type="text" class="form-control todaydate" style="text-align: center;" name="startdate" id="updatestartdate" required="">
-               <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                </div>
-              
-						</div>
-         				   <br>
-						<div class="mb-4" > 
-							<label for="message-text" class="col-form-label">Çıkış Tarihi:</label>
-                <div class="input-group date todaydate" >
-   							<input type="text" class="form-control todaydate" style="text-align: center;" name="enddate" id="updateenddate" >
-
-               <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                </div>
-						</div>
-         				   <br>
-
-						 <div class="modal-footer" style="margin-bottom: -15px; text-align: center;">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-							<input type="submit" name="" class="btn btn-primary" value="Güncelle">
-						</div>
-            <input type="hidden" name="id" id="id">
-					</form>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-        <script>
-         $(document).ready(function(){
-
-         let datatable = $('#data-table').DataTable({
-           "processing" : true,
-            "ajax" : {
-			url:"personnel/list",
-			type:"POST",
-		},
-    columns:[
-    {data:'name'},
-    {data:'startdate'},
-    {data:'enddate'},
-    ],
-    order: [[ 1, "desc" ]],
-    language: {url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Turkish.json'},
-    lengthMenu: [[-1,20,50,100], ['All',20,50,100]],
-    pageLength:20,
-    dom: '<"top"lBf>rt<"bottom"ip><"clear">',
-    buttons: [
-             {
-  extend: 'pdf',
- messageTop: 'PDF created by PDFMake with Buttons for DataTables.',
-  title:'Noxus Chocolate',
-  exportOptions:{
-                 columns:[0,1,2],
-               },
-    customize: function (doc) {
-    doc.content[1].table.widths = 
-        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-  }
-},
-             {
-               extend:'excel',
-               title:'Noxus Chocolate',
-               exportOptions:{
-                 columns:[0,1,2]
-               }
-             },
-             
-            {
-              extend: 'print',
-              title:'Noxus Chocolate',
-              exportOptions:{
-                columns:[0,1,2]
-              }
-            }
-        ],
-    columnDefs:[
-    {
-      render: function(data, type, row){
-      const html = `<button class="btn btn-success updatepersonnel"  data-id="${row.id}" name="update">Güncelle</button>`+
-      `<input type="button" data-url="personnel/delete" data-value="${row.id}" class="btn btn-danger deleted" name="delete" value="Sil">`
-      return html
-    },
-    targets: 4
-    },
-    {
-      render: function(data, type, row){
-
-        if(row.isactive){
-          var html =  `<input type="checkbox" class="js-switch isActive" checked data-url="personnel/isActive" data-id="${row.id}"  " />`
-        }else{
-          var html =  `<input type="checkbox" class="js-switch isActive" data-url="personnel/isActive" data-id="${row.id}"  " />`
-        }
-      return html
-    },
-    targets: 3
-    }]
-    
-    
-  })
-
-
-
-
-        $(".addpersonnel").click(function(){
-          $('#addname').val('')
-          $('#addsalary').val('')
-          $('#addstartdate').val(new Date().format('Y-m-d').toLocaleString('tr-TR'))
-           $('#addenddate').val('')
-            $('#openaddmodal').modal('show');
-        })
-
-
-
-        $("#addpersonnel").submit(function(){
-
- 	  $.ajax({
-      type:'POST',
-      url:'/personnel/add',
-      data:$(this).serialize(),
-      success :function(data){
-
- 
-      $.alerts('success','Well done')
-         
-      $('#openaddmodal').modal('hide');
-
-      datatable.ajax.reload();
-      $.swit()
-
-      }
-    })
-    .fail(function(err) {
-     $.errorMessage(err)
-    })
-
-
-
- });
-
-
-
-$('#data-table').on('click', '.updatepersonnel', function(){
-
-      $.ajax({
-        type:'POST',
-        url:'personnel/update',
-        data:{id:$(this).data('id')},
-        success :function(result){
-
-          $('#updatename').val(result.name);
-          $('#updatesalary').val(result.salary)
-          $('#updatestartdate').val($.trim(result.startdate));
-          $('#updateenddate').val($.trim(result.enddate));
-          $('#id').val(result.id);
-          $('#openupdatemodal').modal('show');
-        }
-    })
-})
-
-    $("#updatepersonnel").submit(function(){
-
-        
-      $.ajax({
-        type:'Patch',
-        url:'personnel/update',
-        data:$(this).serialize(),
-        success :function(veri){
-         
-          $('#openupdatemodal').modal('hide');
-          datatable.ajax.reload();
-          $.swit()
-          $.alerts('success','Well done')
-        }
-      })
-      .fail(function(err) {
-         $.errorMessage(err)
-    })
-
-    })
-
-
-      $('#data-table').on("click", ".deleted", function(){
-
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted,",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-
-
-        $.ajax({
-          url: $(this).data('url'),
-          type: 'DELETE',
-          data: {id: $(this).data('value')},
-          success: function(result){
-             datatable.ajax.reload();
-                  swal("Poof! Your imaginary file has been deleted!", {
-                      icon: "success",
-                    });
-          }
-        })
-
-      } else {
-        swal("Your imaginary file is safe!");
-      }
-    });
-
-
-
-
-
-});
-   
-
-             
-
-
-          })
-        </script>
-                <script>
-          $('.todaydate').datetimepicker({
-            format: 'YYYY-MM-DD',
-          })
-        </script>
-     
-        <footer>
-           {{>footer}}
-        </footer>
-        
       </div>
     </div>
 
-    {{>footer.js}}
-	
-  </body>
+
+    {{!-- Add personnel Start --}}
+
+    <div class="modal fade" id="openaddmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="text-align: center;" id="exampleModalLabel">Personel Ekle</h5>
+
+          </div>
+          <div class="modal-body">
+            <form method="dialog" action="" id="addpersonnel">
+              <div class="mb-4">
+                <label for="recipient-name" class="col-form-label">İsim:</label>
+                <input type="text" class="form-control" name="name" id="addname" required="">
+              </div>
+              <br>
+              <div class="mb-4">
+                <label for="message-text" class="col-form-label">Başlangıç Tarihi:</label>
+                <div class="input-group date todaydate">
+                  <input type="text" class="form-control todaydate" style="text-align: center;" name="startdate"
+                         id="addstartdate" required="">
+                  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                </div>
+
+              </div>
+              <br>
+              <div class="mb-4">
+                <label for="message-text" class="col-form-label">Çıkış Tarihi:</label>
+                <div class="input-group date todaydate">
+                  <input type="text" class="form-control todaydate" style="text-align: center;" name="enddate"
+                         id="addenddate">
+
+                  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                </div>
+              </div>
+              <br>
+
+              <div class="modal-footer" style="margin-bottom: -15px; text-align: center;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <input type="submit" name="" class="btn btn-primary" value="Kaydet">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Add personnel End --}}
+
+    <div class="modal fade" id="openupdatemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="text-align: center;" id="exampleModalLabel">Personel Güncelle</h5>
+
+          </div>
+          <div class="modal-body">
+            <form action="" method="dialog" id="updatepersonnel">
+              <div class="mb-4">
+                <label for="recipient-name" class="col-form-label">İsim:</label>
+                <input type="text" class="form-control" name="name" id="updatename" required="">
+              </div>
+              <br>
+
+              <div class="mb-4">
+                <label for="message-text" class="col-form-label">Başlangıç Tarihi:</label>
+                <div class="input-group date todaydate">
+                  <input type="text" class="form-control todaydate" style="text-align: center;" name="startdate"
+                         id="updatestartdate" required="">
+                  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                </div>
+
+              </div>
+              <br>
+              <div class="mb-4">
+                <label for="message-text" class="col-form-label">Çıkış Tarihi:</label>
+                <div class="input-group date todaydate">
+                  <input type="text" class="form-control todaydate" style="text-align: center;" name="enddate"
+                         id="updateenddate">
+
+                  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                </div>
+              </div>
+              <br>
+
+              <div class="modal-footer" style="margin-bottom: -15px; text-align: center;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <input type="submit" name="" class="btn btn-primary" value="Güncelle">
+              </div>
+              <input type="hidden" name="id" id="id">
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      $(document).ready(function() {
+
+        let datatable = $("#data-table").DataTable({
+          "processing": true,
+          "ajax": {
+            url: "personnel/list",
+            type: "POST"
+          },
+          columns: [
+            { data: "name" },
+            { data: "startdate" },
+            { data: "enddate" }
+          ],
+          order: [[1, "desc"]],
+          language: { url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Turkish.json" },
+          lengthMenu: [[-1, 20, 50, 100], ["All", 20, 50, 100]],
+          pageLength: 20,
+          dom: "<\"top\"lBf>rt<\"bottom\"ip><\"clear\">",
+          buttons: [
+            {
+              extend: "pdf",
+              messageTop: "PDF created by PDFMake with Buttons for DataTables.",
+              title: "Noxus Chocolate",
+              exportOptions: {
+                columns: [0, 1, 2]
+              },
+              customize: function(doc) {
+                doc.content[1].table.widths =
+                  Array(doc.content[1].table.body[0].length + 1).join("*").split("");
+              }
+            },
+            {
+              extend: "excel",
+              title: "Noxus Chocolate",
+              exportOptions: {
+                columns: [0, 1, 2]
+              }
+            },
+
+            {
+              extend: "print",
+              title: "Noxus Chocolate",
+              exportOptions: {
+                columns: [0, 1, 2]
+              }
+            }
+          ],
+          columnDefs: [
+            {
+              render: function(data, type, row) {
+                const html = `<button class="btn btn-success updatepersonnel"  data-id="${row.id}" name="update">Güncelle</button>` +
+                  `<input type="button" data-url="personnel/delete" data-value="${row.id}" class="btn btn-danger deleted" name="delete" value="Sil">`;
+                return html;
+              },
+              targets: 4
+            },
+            {
+              render: function(data, type, row) {
+
+                if (row.isactive) {
+                  var html = `<input type="checkbox" class="js-switch isActive" checked data-url="personnel/isActive" data-id="${row.id}"  " />`;
+                } else {
+                  var html = `<input type="checkbox" class="js-switch isActive" data-url="personnel/isActive" data-id="${row.id}"  " />`;
+                }
+                return html;
+              },
+              targets: 3
+            }]
+
+
+        });
+
+
+        $(".addpersonnel").click(function() {
+          $("#addname").val("");
+          $("#addsalary").val("");
+          $("#addstartdate").val(new Date().format("Y-m-d").toLocaleString("tr-TR"));
+          $("#addenddate").val("");
+          $("#openaddmodal").modal("show");
+        });
+
+
+        $("#addpersonnel").submit(function() {
+
+          $.ajax({
+            type: "POST",
+            url: "/personnel/add",
+            data: $(this).serialize(),
+            success: function(data) {
+
+
+              $.alerts("success", "Well done");
+
+              $("#openaddmodal").modal("hide");
+
+              datatable.ajax.reload();
+              $.swit();
+
+            }
+          })
+            .fail(function(err) {
+              $.errorMessage(err);
+            });
+
+
+        });
+
+
+        $("#data-table").on("click", ".updatepersonnel", function() {
+
+          $.ajax({
+            type: "POST",
+            url: "personnel/update",
+            data: { id: $(this).data("id") },
+            success: function(result) {
+
+              $("#updatename").val(result.name);
+              $("#updatesalary").val(result.salary);
+              $("#updatestartdate").val($.trim(result.startdate));
+              $("#updateenddate").val($.trim(result.enddate));
+              $("#id").val(result.id);
+              $("#openupdatemodal").modal("show");
+            }
+          });
+        });
+
+        $("#updatepersonnel").submit(function() {
+
+
+          $.ajax({
+            type: "Patch",
+            url: "personnel/update",
+            data: $(this).serialize(),
+            success: function(veri) {
+
+              $("#openupdatemodal").modal("hide");
+              datatable.ajax.reload();
+              $.swit();
+              $.alerts("success", "Well done");
+            }
+          })
+            .fail(function(err) {
+              $.errorMessage(err);
+            });
+
+        });
+
+
+        $("#data-table").on("click", ".deleted", function() {
+
+          swal({
+            title: "Are you sure?",
+            text: "Once deleted,",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+          })
+            .then((willDelete) => {
+              if (willDelete) {
+
+
+                $.ajax({
+                  url: $(this).data("url"),
+                  type: "DELETE",
+                  data: { id: $(this).data("value") },
+                  success: function(result) {
+                    datatable.ajax.reload();
+                    swal("Poof! Your imaginary file has been deleted!", {
+                      icon: "success"
+                    });
+                  }
+                });
+
+              } else {
+                swal("Your imaginary file is safe!");
+              }
+            });
+
+
+        });
+
+
+      });
+    </script>
+    <script>
+      $(".todaydate").datetimepicker({
+        format: "YYYY-MM-DD"
+      });
+    </script>
+
+    <footer>
+      {{>footer}}
+    </footer>
+
+  </div>
+</div>
+
+{{>footer.js}}
+
+</body>
 </html>

@@ -9,6 +9,6 @@ import { SettingsModule } from 'src/settings/settings.module';
 @Module({
   controllers: [DashboardController],
   providers: [DashboardService],
-  imports:[UsersModule,CiroModule,ExpensesModule,SettingsModule]
+  imports: [UsersModule, CiroModule, ExpensesModule, SettingsModule],
 })
 export class DashboardModule {}

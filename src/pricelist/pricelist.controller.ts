@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Delete, Res, Req, UsePipes } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Delete,
+  Res,
+  Req,
+  UsePipes,
+} from '@nestjs/common';
 import { PricelistService } from './pricelist.service';
 import { CreatePricelistDto } from './dto/create-pricelist.dto';
 import { UpdatePricelistDto } from './dto/update-pricelist.dto';
@@ -12,69 +22,58 @@ export class PricelistController {
 
   @Get()
   async index(@Res() res, @Req() req) {
-    return res.render(
-      'pricelist',
-      {
-        user: req.user,
-        allSetting: await this.pricelistService.allSetting(),
-      }
-    )
+    return res.render('pricelist', {
+      user: req.user,
+      allSetting: await this.pricelistService.allSetting(),
+    });
   }
 
   @Post('add')
-  @UsePipes(new JoiValidationPipe(addPricelistValid)) 
+  @UsePipes(new JoiValidationPipe(addPricelistValid))
   create(@Body() CreatePricelistDto: CreatePricelistDto) {
-    return this.pricelistService.create(CreatePricelistDto)
+    return this.pricelistService.create(CreatePricelistDto);
   }
 
   @Post('list')
-  async allPricelist(){
-    
-    const  allPricelist = await this.pricelistService.findAll()
-    const dataArray = []
+  async allPricelist() {
+    const allPricelist = await this.pricelistService.findAll();
+    const dataArray = [];
 
-    allPricelist.forEach(function(key,value){
+    allPricelist.forEach(function (key, value) {
+      const simple = {
+        name: key.name,
+        price: key.price,
+        id: key.id,
+      };
 
-      let simple = {
-        name:key.name,
-        price:key.price,
-        id:key.id
-      }
-
-      dataArray.push(simple)
-    })
+      dataArray.push(simple);
+    });
 
     return {
-      'data': dataArray
-    }
-
+      data: dataArray,
+    };
   }
-
 
   @Post('update')
-  findandfetch(@Body('id') id: string){
-    return this.pricelistService.findOne(id)
-    .then((result)=>{
-      return result
-    })
-    .catch((e)=>{
-      return e
-    })
+  findandfetch(@Body('id') id: string) {
+    return this.pricelistService
+      .findOne(id)
+      .then((result) => {
+        return result;
+      })
+      .catch((e) => {
+        return e;
+      });
   }
 
-
   @Patch('update')
-  @UsePipes(new JoiValidationPipe(updatePricelistValid)) 
+  @UsePipes(new JoiValidationPipe(updatePricelistValid))
   update(@Body() UpdatePricelistDto: UpdatePricelistDto) {
-    return this.pricelistService.update(UpdatePricelistDto)
+    return this.pricelistService.update(UpdatePricelistDto);
   }
 
   @Delete('delete')
   remove(@Body('id') id: string) {
     return this.pricelistService.remove(id);
   }
-
-
-
-  
 }
