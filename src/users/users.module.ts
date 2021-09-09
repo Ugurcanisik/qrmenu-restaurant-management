@@ -6,12 +6,14 @@ import { config } from 'src/orm.config';
 import { User } from './entities/user.entity';
 import { SettingsModule } from 'src/settings/settings.module';
 
-
-
 @Module({
-  imports: [ TypeOrmModule.forRoot(config), TypeOrmModule.forFeature([User]),SettingsModule],
+  imports: [
+    TypeOrmModule.forRoot(config),
+    TypeOrmModule.forFeature([User]),
+    SettingsModule,
+  ],
   controllers: [UsersController],
   providers: [UsersService],
-  exports:[UsersService]
+  exports: [UsersService],
 })
 export class UsersModule {}

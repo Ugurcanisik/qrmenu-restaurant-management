@@ -5,31 +5,21 @@ import { SettingsService } from './settings/settings.service';
 
 @Injectable()
 export class AppService {
-
-
-
-
   constructor(
-    private readonly categoriesService: CategoriesService, 
+    private readonly categoriesService: CategoriesService,
     private readonly productService: ProductsService,
     private readonly settingService: SettingsService,
-    ){}
+  ) {}
 
-  allCategoryQr(){
-    return this.categoriesService.allCategoryQr()
+  allCategoryQr() {
+    return this.categoriesService.allCategoryQr();
   }
 
-
-  allSetting(){
-    return this.settingService.findAll()
+  allSetting() {
+    return this.settingService.findAll();
   }
 
-
-  allProductsQr(){
-    return this.productService.allProductsQr()
+  allProductsQr() {
+    return this.productService.allProductsQr();
   }
-
-
-
-
 }

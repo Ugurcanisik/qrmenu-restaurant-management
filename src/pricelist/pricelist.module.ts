@@ -7,8 +7,12 @@ import { Pricelist } from './entities/pricelist.entity';
 import { SettingsModule } from 'src/settings/settings.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config), TypeOrmModule.forFeature([Pricelist]),SettingsModule],
+  imports: [
+    TypeOrmModule.forRoot(config),
+    TypeOrmModule.forFeature([Pricelist]),
+    SettingsModule,
+  ],
   controllers: [PricelistController],
-  providers: [PricelistService]
+  providers: [PricelistService],
 })
 export class PricelistModule {}

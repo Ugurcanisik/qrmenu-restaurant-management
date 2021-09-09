@@ -8,9 +8,14 @@ import { Product } from './entities/product.entity';
 import { SettingsModule } from 'src/settings/settings.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config), TypeOrmModule.forFeature([Product]),CategoriesModule,SettingsModule],
+  imports: [
+    TypeOrmModule.forRoot(config),
+    TypeOrmModule.forFeature([Product]),
+    CategoriesModule,
+    SettingsModule,
+  ],
   controllers: [ProductsController],
   providers: [ProductsService],
-  exports:[ProductsService]
+  exports: [ProductsService],
 })
 export class ProductsModule {}

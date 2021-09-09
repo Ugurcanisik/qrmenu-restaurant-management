@@ -7,9 +7,13 @@ import { Ciro } from './entities/ciro.entity';
 import { SettingsModule } from 'src/settings/settings.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config), TypeOrmModule.forFeature([Ciro]),SettingsModule],
+  imports: [
+    TypeOrmModule.forRoot(config),
+    TypeOrmModule.forFeature([Ciro]),
+    SettingsModule,
+  ],
   controllers: [CiroController],
   providers: [CiroService],
-  exports:[CiroService]
+  exports: [CiroService],
 })
 export class CiroModule {}

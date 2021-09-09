@@ -8,40 +8,42 @@ import { Pricelist } from './entities/pricelist.entity';
 
 @Injectable()
 export class PricelistService {
-
   constructor(
-    @InjectRepository(Pricelist) private PricelistRespository: Repository<Pricelist>,
-    private readonly SettingsService: SettingsService
+    @InjectRepository(Pricelist)
+    private PrickliestRepository: Repository<Pricelist>,
+    private readonly SettingsService: SettingsService,
   ) {}
 
-
-  allSetting(){
-    return this.SettingsService.findAll()
+  allSetting() {
+    return this.SettingsService.findAll();
   }
 
-
-  async findAll(){
-    return await this.PricelistRespository.find({where: {deleted: false},order:{name: 'ASC'}})
+  async findAll() {
+    return await this.PrickliestRepository.find({
+      where: { deleted: false },
+      order: { name: 'ASC' },
+    });
   }
 
   async create(CreatePricelistDto: CreatePricelistDto) {
-    const newCiro = await this.PricelistRespository.create(CreatePricelistDto) 
-    return await this.PricelistRespository.save(newCiro)
+    const newCiro = await this.PrickliestRepository.create(CreatePricelistDto);
+    return await this.PrickliestRepository.save(newCiro);
   }
 
-
   findOne(id: string) {
-    return  this.PricelistRespository.findOne({where:{id:id, deleted:false}})
+    return this.PrickliestRepository.findOne({
+      where: { id: id, deleted: false },
+    });
   }
 
   async update(UpdatePricelistDto: UpdatePricelistDto) {
-    return await this.PricelistRespository.update(UpdatePricelistDto.id,UpdatePricelistDto)
+    return await this.PrickliestRepository.update(
+      UpdatePricelistDto.id,
+      UpdatePricelistDto,
+    );
   }
 
   remove(id: string) {
-    return this.PricelistRespository.update(id,{deleted:true})
+    return this.PrickliestRepository.update(id, { deleted: true });
   }
-
-
-  
 }
